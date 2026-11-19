@@ -11,7 +11,7 @@
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; color: var(--ink); font: 1rem/1.55 var(--body); background: var(--dark); }
+body { margin: 0; color: #fff3f4; font: 1rem/1.55 var(--body); background: var(--dark); }
 h1, h2, h3, p, figure { margin: 0; }
 h1, h2, h3 { font-family: var(--display); font-weight: 500; line-height: 1.08; text-wrap: balance; }
 h1 { font-size: clamp(2.35rem, 4.5vw, 4.25rem); }
@@ -33,8 +33,8 @@ section header { margin-bottom: clamp(1.5rem, 4vw, 3.25rem); }
 .dark, .wine { color: #fff3f4; }
 .dark { background: radial-gradient(ellipse at 50% 25%, #3c1020, var(--dark) 75%); }
 .wine { background: radial-gradient(ellipse at 52% 40%, #61102a, #3d1020 78%); }
-.cream { background: var(--cream); }
-.light { background: #fcf8f7; }
+.cream { background: var(--cream); color: var(--ink); }
+.light { background: #fcf8f7; color: var(--ink); }
 .notch::after { content: ''; background: inherit; clip-path: polygon(0 0, 100% 0, 50% 100%); width: 3rem; height: 1rem; position: absolute; top: calc(100% - 1px); left: 50%; translate: -50%; z-index: 2; }
 .split, .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 4vw, 3rem); }
 .align { align-items: center; }
@@ -467,16 +467,16 @@ main { overflow-x: clip; }
 .plan-cash { margin-top: .7rem; font-size: clamp(.82rem, 1vw, 1rem); color: #8a5466; }
 .offer-single .plan-action .btn { width: min(100%, 24rem); justify-content: center; }
 
-.hero-logo { width: clamp(15rem, 25vw, 25rem); margin-bottom: 1.9vw; margin-left: -.6vw; }
+.hero-logo { width: clamp(12rem, 15.4vw, 19rem); margin-bottom: 2.2vw; }
 .hero-inner { padding-top: 3vw; min-height: 52vw; }
 .hero-copy { animation: hero-in 1s cubic-bezier(.2,.8,.2,1) both; }
 .hero-logo { animation: hero-in 1s cubic-bezier(.2,.8,.2,1) both, logo-float 6s ease-in-out 1.2s infinite; }
-@keyframes hero-in { from { opacity: 0; transform: translateY(24px); } }
+@keyframes hero-in { from { opacity: 0; transform: translateX(-60px); } }
 @keyframes logo-float { 50% { transform: translateY(-6px); } }
 .hero { background-position: center top; animation: hero-zoom 18s ease-out both; }
 @keyframes hero-zoom { from { background-size: 108% auto; } to { background-size: 100% auto; } }
 
-.chapter-grid article, .quote-card, .product, .reasons article, .plan { transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s; }
+.chapter-grid article, .quote-card, .product, .reasons article, .plan { transition: opacity 1.45s ease, translate 1.45s cubic-bezier(.18,.55,.31,1), transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s; }
 .chapter-grid article:hover, .quote-card:hover, .product:hover, .reasons article:hover { transform: translateY(-6px); box-shadow: 0 18px 40px #1d070f55; }
 .chapter-grid img, .product img, .reason-wide img, .split > img, .bonus .feature { transition: transform .6s cubic-bezier(.2,.8,.2,1); }
 .chapter-grid article:hover img, .product:hover img { transform: scale(1.04); }
@@ -491,3 +491,32 @@ main { overflow-x: clip; }
   .hero, .hero-copy, .hero-logo { animation: none !important; }
 }
 .faq { padding-top: max(3.5rem, 7vw); }
+
+/* v3: direção das animações — coluna esquerda entra da esquerda, coluna direita entra da direita */
+[data-reveal="left"] { --entry-x: calc(-1 * var(--entry-distance)); }
+[data-reveal="right"] { --entry-x: var(--entry-distance); }
+
+/* Programação */
+.schedule .wrap > header > p:last-child { margin-top: .8rem; opacity: .9; }
+.schedule-grid { list-style: none; margin: clamp(1.5rem, 3vw, 3rem) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(.55rem, .8vw, 1rem); }
+.schedule-grid li { display: flex; align-items: center; gap: clamp(1rem, 2vw, 2rem); padding: clamp(1rem, 2vw, 1.8rem) clamp(1rem, 2.2vw, 2.2rem); border: 1px solid #c1506e55; background: #260a16bb; border-radius: .5rem; }
+.schedule-grid time { flex: none; color: var(--hot); font: 400 clamp(1.5rem, 2.4vw, 2.6rem)/1 var(--display); letter-spacing: -.03em; min-width: 6.2ch; }
+.schedule-grid .eyebrow { margin-bottom: .45rem; }
+.schedule-grid h3 { font-size: clamp(1.05rem, 1.6vw, 1.6rem); font-family: var(--display); font-weight: 400; line-height: 1.2; }
+.schedule-extra { display: flex; align-items: center; gap: 1.2rem; margin-top: clamp(.55rem, .8vw, 1rem); padding: clamp(1.1rem, 2vw, 1.8rem) clamp(1rem, 2.2vw, 2.2rem); background: var(--paper); color: var(--ink); border-radius: .5rem; }
+.schedule-extra p { font-size: clamp(.95rem, 1.3vw, 1.25rem); }
+.schedule-extra strong { color: var(--accent); }
+.schedule-symbol { flex: none; width: clamp(3rem, 4.5vw, 4.6rem); aspect-ratio: 1; border-radius: 50%; background: #fff url('../imagens/clube-simbolo.png') center / 70% no-repeat; box-shadow: 0 0 0 1px #ebd0d7; }
+@media (max-width: 680px) {
+  .schedule-grid { grid-template-columns: 1fr; }
+  .schedule-grid li { flex-direction: column; align-items: flex-start; gap: .5rem; }
+}
+
+/* Doutoras: foto sem cortar a cabeça + biografia */
+.values .product img { object-position: center top; }
+.values .product .bio { margin: .9rem auto .2rem; max-width: 30rem; font-size: clamp(.88rem, 1.05vw, 1.02rem); line-height: 1.55; color: #4a2a35; }
+.values .two { align-items: stretch; }
+
+/* Preço */
+.plan h3 small { display: block; font-size: .3em; letter-spacing: -.02em; margin-bottom: .15em; color: #8a1d43; }
+.offer-single .plan-payment s { color: #9b6b7a; }

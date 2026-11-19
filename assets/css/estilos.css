@@ -478,7 +478,7 @@ main { overflow-x: clip; }
 
 .chapter-grid article, .quote-card, .product, .reasons article, .plan { transition: opacity 1.45s ease, translate 1.45s cubic-bezier(.18,.55,.31,1), transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s; }
 .chapter-grid article:hover, .quote-card:hover, .product:hover, .reasons article:hover { transform: translateY(-6px); box-shadow: 0 18px 40px #1d070f55; }
-.chapter-grid img, .product img, .reason-wide img, .split > img, .bonus .feature { transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.chapter-grid img, .product img, .reason-wide img, .split > img, .bonus .feature { transition: opacity 1.45s ease, translate 1.45s cubic-bezier(.18,.55,.31,1), transform .6s cubic-bezier(.2,.8,.2,1); }
 .chapter-grid article:hover img, .product:hover img { transform: scale(1.04); }
 .chapter-grid article, .product { overflow: hidden; }
 
@@ -520,3 +520,15 @@ main { overflow-x: clip; }
 /* Preço */
 .plan h3 small { display: block; font-size: max(1.1rem, .3em); letter-spacing: -.02em; margin-bottom: .15em; color: #8a1d43; }
 .offer-single .plan-payment s { color: #85566a; }
+
+/* v4: animação dos elementos — depois que o bloco entra, os itens dentro dele entram um a um */
+.nowrap { white-space: nowrap; }
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal].revealed:not(.hero-copy):not(.investment-ribbons) > * {
+    animation: child-in .9s cubic-bezier(.2,.8,.2,1) backwards;
+    animation-delay: calc(.2s + var(--i, 0) * .09s);
+  }
+  [data-reveal="left"].revealed > * { --cx: -32px; --cy: 0px; }
+  [data-reveal="right"].revealed > * { --cx: 32px; --cy: 0px; }
+}
+@keyframes child-in { from { opacity: 0; translate: var(--cx, 0px) var(--cy, 18px); } }

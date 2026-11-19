@@ -53,3 +53,8 @@ document.querySelectorAll('[data-checkout]').forEach((button) => {
     checkoutDialog.showModal();
   });
 });
+
+// Numera os filhos de cada bloco animado para entrarem em cascata (ver .revealed > * no CSS).
+document.querySelectorAll('[data-reveal]').forEach((block) => {
+  [...block.children].forEach((child, i) => child.style.setProperty('--i', i));
+});

@@ -1,0 +1,16 @@
+# Backups e arquivos do modelo anterior (não publicar)
+*.bak
+LEIA-ME.md
+assets/imagens/ebook.webp
+assets/imagens/motivos.webp
+assets/imagens/prevencao.webp
+assets/imagens/mitos.webp
+assets/imagens/vitoria.webp
+assets/imagens/bonus.webp
+assets/imagens/produto*.webp
+assets/imagens/pagamento-*.webp
+assets/imagens/selo.webp
+assets/imagens/autora.webp
+assets/imagens/logo.webp
+assets/imagens/hero---.webp
+assets/imagens/Logo_Clube_Alem_da_Linguagem-400x160.png

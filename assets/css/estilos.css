@@ -518,5 +518,5 @@ main { overflow-x: clip; }
 .values .two { align-items: stretch; }
 
 /* Preço */
-.plan h3 small { display: block; font-size: .3em; letter-spacing: -.02em; margin-bottom: .15em; color: #8a1d43; }
+.plan h3 small { display: block; font-size: max(1.1rem, .3em); letter-spacing: -.02em; margin-bottom: .15em; color: #8a1d43; }
 .offer-single .plan-payment s { color: #85566a; }
